@@ -50,11 +50,11 @@ h1 small {
 }
 
 .jumbotron p {
-    margin-top: 12px;
+    margin-top: 15px;
     color: #D9D9B8;
     text-align: justify;
     font-size: 14pt;
-    line-height: 1.2em;
+    line-height: 1.5em;
 }
 
 .jumbotron p strong {
