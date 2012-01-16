@@ -6,5 +6,6 @@
       "express": "2.x"
     , "jade": "0.x"
     , "mongoose": "2.x"
+    , "discount": "0.x"
   }
 }
