@@ -1,6 +1,8 @@
 var express = require('express');
 var routes = require('./routes');
 
+var conf = require('./conf');
+
 var app = module.exports = express.createServer();
 
 app.configure(function() {
@@ -22,5 +24,5 @@ app.configure('production', function(){
 
 routes.registerOn(app);
 
-app.listen(3000);
+app.listen(conf.port);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
