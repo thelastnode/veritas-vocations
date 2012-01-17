@@ -2,12 +2,13 @@ var fs = require('fs');
 
 var models = require('../lib/models');
 var email = require('../lib/email');
+var conf = require('../conf');
 
 var CONFIRM_EMAIL = fs.readFileSync('views/confirm.txt', 'utf8');
 var MATCH_FOUND = fs.readFileSync('views/match.txt', 'utf8');
 
 var send_confirm_email = function(user) {
-    var body = CONFIRM_EMAIL.replace('URL_CONFIRM', '/confirm/' + user.id).replace('URL_DELETE', '/delete/' + user.id);
+    var body = CONFIRM_EMAIL.replace('URL_CONFIRM', 'http://' + conf.host + '/confirm/' + user.id).replace('URL_DELETE', 'http://' + conf.host + '/delete/' + user.id);
     email.send({
         to: user.email,
         subject: 'Veritas Vocations Verification',
