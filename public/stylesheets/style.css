@@ -16,7 +16,9 @@ body .container {
     background-color: #570912;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, h1 a,
+h1 a:hover, h1 a:visited,
+label {
     color: #FFFFDA;
 }
 
@@ -93,4 +95,27 @@ h1 small {
 
 .blurb h2 {
     color: black;
+}
+
+h1 a:hover {
+    text-decoration: none;
+}
+
+#signup-area {
+    margin-top: 30px;
+}
+
+.ad-size {
+    color: #D9D9B8;
+    font-size: 18pt;
+    line-height: 1.3em;
+}
+
+#signup-button {
+    margin-top: 10px;
+    margin-left: 64.8%; /* shut up */
+}
+
+.errors {
+    margin-top: 10px;
 }

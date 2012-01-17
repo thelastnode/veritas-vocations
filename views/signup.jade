@@ -1,0 +1,44 @@
+h1
+  a(href='/') Veritas Vocations
+
+if typeof errors != "undefined" && errors
+  .errors
+    each error in errors
+      .alert.alert-error
+        strong= error
+  
+.row#signup-area
+  .span6
+    p.ad-size Almost there, we just need a bit of information before we can match you up!
+    p.ad-size We hate spam too, so we promise not to do anything with your information.
+  .span6
+    form(action='/signup', method='POST').form-horizontal
+      fieldset.control-group
+        label(for='name').control-label Name
+        .controls
+          input(type='text', name='name', value=form.name).xlarge#name
+      fieldset.control-group
+        label(for='email').control-label Email
+        .controls
+          input(type='text', name='email', value=form.email).xlarge#email
+          p.help-block This needs to be your @college email
+      fieldset.control-group
+        label(for='house').control-label House
+        .controls
+          select(name='house')#house
+            option River
+            option Quad
+        .controls
+          label.checkbox
+            input(type='checkbox', name='near_only', value='true')
+            p Only pair me with people near me
+      fieldset.control-group
+        label(for='year').control-label Year
+        .controls
+          select(name='year').xlarge#year
+            option Freshman
+            option Sophomore
+            option Junior
+            option Senior
+    
+      input(type='submit', value='Sign up!').btn.large#signup-button
