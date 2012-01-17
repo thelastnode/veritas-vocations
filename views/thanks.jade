@@ -1,0 +1,22 @@
+h1
+  a(href='/') Veritas Vocations
+
+if typeof errors != "undefined" && errors
+  .errors
+    each error in errors
+      .alert.alert-error
+        strong= error
+
+ if already_registered
+   .row
+     .span12
+       p.ad-size It looks like you've already registered.
+       if verified
+         p.ad-size We haven't found a match for you yet, but we'll let you know as soon as we have one!
+       else
+         p.ad-size Check your email for a confirmation from us.
+ else
+   .row
+     .span12
+       p.ad-size Thanks! We've sent you an email asking you to confirm your email address.
+       p.ad-size After you confirm, we'll match you up to someone else!

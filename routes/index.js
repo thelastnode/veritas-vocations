@@ -1,5 +1,9 @@
 var models = require('../lib/models');
 
+var send_confirm_email = function(user) {
+    // TODO
+};
+
 var find_match = function(user) {
     console.log('Finding match for ' + user.name); // TODO
 };
@@ -28,24 +32,36 @@ var signup_post = function(req, res, next) {
         });
     }
 
-    var user = new models.User({
-        timestamp: new Date(),
-        name: req.body.name,
-        email: req.body.email,
-        year: req.body.year,
-        location: req.body.house,
-        near_only: req.body.near_only,
-        areas: req.body.areas,
-    });
-
-    user.save(function(err) {
-        if (err) {
-            next(err);
+    models.User.findOne({email: req.body.email}, function(err, user) {
+        if (err) return next(err);
+        if (user != null) {
+            return res.render('thanks', {
+                already_registered: true,
+                verified: user.verified,
+            });
         }
-        process.nextTick(function() {
-            find_match(user);
+        
+        var user = new models.User({
+            timestamp: new Date(),
+            name: req.body.name,
+            email: req.body.email,
+            year: req.body.year,
+            location: req.body.house,
+            near_only: req.body.near_only,
+            areas: req.body.areas,
         });
-        res.redirect('/thanks');
+
+        user.save(function(err) {
+            if (err) {
+                next(err);
+            }
+            process.nextTick(function() {
+                send_confirm_email(user);
+            });
+            res.render('thanks', {
+                already_registered: false,
+            }); 
+        });
     });
 };
 
