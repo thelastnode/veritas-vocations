@@ -100,6 +100,17 @@ var confirm_email = function(req, res, next) {
     });
 };
 
+var delete_email = function(req, res, next) {
+    models.User.findOne(req.params.id, function(err, user) {
+        if (err) return next(err);
+        if (!user) return res.send(404);
+
+        user.remove();
+
+        res.render('delete');
+    });
+};
+
 exports.registerOn = function(app) {
     app.get('/', function(req, res) {
         res.render('index');
@@ -112,6 +123,7 @@ exports.registerOn = function(app) {
     });
 
     app.get('/confirm/:id', confirm_email);
+    app.get('/delete/:id', delete_email);
 
     app.post('/signup', signup_post);
 };
