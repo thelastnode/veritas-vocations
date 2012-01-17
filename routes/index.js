@@ -1,7 +1,22 @@
+var fs = require('fs');
+
 var models = require('../lib/models');
+var email = require('../lib/email');
+
+var CONFIRM_EMAIL = fs.readFileSync('views/confirm.txt');
+var MATCH_FOUND = fs.readFileSync('views/match.txt');
 
 var send_confirm_email = function(user) {
-    // TODO
+    var body = CONFIRM_EMAIL.replace('URL_CONFIRM', '/confirm/' + user.id).replace('URL_DELETE', '/delete/' + user.id);
+    email.send({
+        to: user.email,
+        subject: 'Veritas Vocations Verification',
+        body: body,
+    }, function(err, success) {
+        if (!success) {
+            console.error(err);
+        }
+    });
 };
 
 var find_match = function(user) {
@@ -60,7 +75,27 @@ var signup_post = function(req, res, next) {
             });
             res.render('thanks', {
                 already_registered: false,
+                verified: false,
             }); 
+        });
+    });
+};
+
+var confirm_email = function(req, res, next) {
+    models.User.findOne(req.params.id, function(err, user) {
+        if (err) return next(err);
+        if (!user) return res.send(404);
+
+        user.verified = true;
+        user.save();
+
+        res.render('thanks', {
+            already_registered: false,
+            verified: true,
+        });
+
+        process.nextTick(function() {
+            find_match(user);
         });
     });
 };
@@ -75,6 +110,8 @@ exports.registerOn = function(app) {
             form: {},
         });
     });
+
+    app.get('/confirm/:id', confirm_email);
 
     app.post('/signup', signup_post);
 };

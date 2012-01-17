@@ -7,16 +7,18 @@ if typeof errors != "undefined" && errors
       .alert.alert-error
         strong= error
 
- if already_registered
-   .row
-     .span12
-       p.ad-size It looks like you've already registered.
-       if verified
-         p.ad-size We haven't found a match for you yet, but we'll let you know as soon as we have one!
-       else
-         p.ad-size Check your email for a confirmation from us.
- else
-   .row
-     .span12
-       p.ad-size Thanks! We've sent you an email asking you to confirm your email address.
-       p.ad-size After you confirm, we'll match you up to someone else!
+  
+.row
+  .span12
+    if already_registered
+      p.ad-size It looks like you've already registered.
+      if verified
+        p.ad-size We haven't found a match for you yet, but we'll let you know as soon as we have one!
+      else
+        p.ad-size Check your email for a confirmation from us.
+    else
+      if verified
+        p.ad-size Thanks! We'll let you know as soon as we have a match!
+      else
+        p.ad-size Thanks! We've sent you an email asking you to confirm your email address.
+        p.ad-size After you confirm, we'll match you up with someone else!
