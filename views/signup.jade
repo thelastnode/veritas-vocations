@@ -40,5 +40,24 @@ if typeof errors != "undefined" && errors
             option Sophomore
             option Junior
             option Senior
+
+      fieldset.control-group
+        label(for='areas').control-label Areas
+        .controls
+          label.checkbox
+            input(type='checkbox', name='areas[]', value='Consulting')
+            p Consulting
+        .controls
+          label.checkbox
+            input(type='checkbox', name='areas[]', value='Sales and Trading')
+            p Sales and Trading
+        .controls
+          label.checkbox
+            input(type='checkbox', name='areas[]', value='Investment Banking')
+            p Investment Banking
+        .controls
+          label.checkbox
+            input(type='checkbox', name='areas[]', value='Behavioral')
+            p Behavioral
     
       input(type='submit', value='Sign up!').btn.large#signup-button

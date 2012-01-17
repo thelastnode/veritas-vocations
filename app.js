@@ -1,7 +1,10 @@
 var express = require('express');
+var mongoose = require('mongoose');
 var routes = require('./routes');
 
 var conf = require('./conf');
+
+mongoose.connect(conf.mongo_uri);
 
 var app = module.exports = express.createServer();
 
