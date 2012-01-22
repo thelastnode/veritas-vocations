@@ -66,6 +66,14 @@ var find_match = function(user) {
     } else {
         q = q.or([{near_only: false}, {location: user.location}]);
     }
+
+    if (user.year == 'Senior') {
+        q = q.where('year', 'Junior');
+    } else if (user.year == 'Junior') {
+        q = q.or([{year: 'Junior'}, {year: 'Senior'}]);
+    } else {
+        q = q.where('year', user.year);
+    }
     
     q.run(function(err, match) {
             if (err) {
