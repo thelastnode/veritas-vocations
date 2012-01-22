@@ -90,7 +90,8 @@ h1 small {
     margin-top: 5px;
     margin-right: -10px;
     margin-left: 17px;
-    height: 10em;
+    height: 13em;
+    text-align: justify;
 }
 
 .blurb h2 {
