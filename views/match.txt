@@ -1,1 +1,10 @@
-TODO
+Dear X,
+
+You have been matched on Veritas Vocations. Your match is Y
+(YEMAIL). Please contact Y as soon as possible to schedule a time to
+meet!
+
+After 24 hours you will automatically be able to resubmit your
+information for another interview match.
+
+Happy prepping!
