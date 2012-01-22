@@ -132,12 +132,15 @@ var signup_post = function(req, res, next) {
             errors: ['You need to pick at least one area of study!'],
         });
     }
-    var SUFFIX = '@college.harvard.edu';
-    if (req.body.email.indexOf(SUFFIX)
-            != req.body.email.length - SUFFIX.length) {
+    var SUFFIX1 = '@college.harvard.edu';
+    var SUFFIX2 = '@fas.harvard.edu';
+    if ((req.body.email.indexOf(SUFFIX1)
+            != req.body.email.length - SUFFIX1.length)
+            && (req.body.email.indexOf(SUFFIX2)
+            != req.body.email.length - SUFFIX2.length)) {
         return res.render('signup', {
             form: req.body,
-            errors: ['You must use an @college.harvard.edu email'],
+            errors: ['You must use an @college.harvard.edu or @fas.harvard.edu email'],
         });
     }
 
