@@ -58,7 +58,7 @@ var signup_post = function(req, res, next) {
         }
         
         var user = new models.User({
-            timestamp: new Date(),
+            register_timestamp: new Date(),
             name: req.body.name,
             email: req.body.email,
             year: req.body.year,
@@ -88,6 +88,7 @@ var confirm_email = function(req, res, next) {
         if (!user) return res.send(404);
 
         user.verified = true;
+        user.confirm_timestamp = new Date();
         user.save();
 
         res.render('thanks', {
