@@ -123,3 +123,8 @@ h1 a:hover {
 .jumbotron strong {
     color: white;
 }
+
+.signature {
+    color: #D9D9B8;
+    margin-top: 10px;
+}
