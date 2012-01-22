@@ -119,3 +119,7 @@ h1 a:hover {
 .errors {
     margin-top: 10px;
 }
+
+.jumbotron strong {
+    color: white;
+}
