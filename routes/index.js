@@ -134,10 +134,8 @@ var signup_post = function(req, res, next) {
     }
     var SUFFIX1 = '@college.harvard.edu';
     var SUFFIX2 = '@fas.harvard.edu';
-    if ((req.body.email.indexOf(SUFFIX1)
-            != req.body.email.length - SUFFIX1.length)
-            && (req.body.email.indexOf(SUFFIX2)
-            != req.body.email.length - SUFFIX2.length)) {
+    if ((req.body.email.indexOf(SUFFIX1) == -1)
+            && (req.body.email.indexOf(SUFFIX2) == -1)) {
         return res.render('signup', {
             form: req.body,
             errors: ['You must use an @college.harvard.edu or @fas.harvard.edu email'],
